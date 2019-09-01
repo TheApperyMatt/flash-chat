@@ -31,11 +31,13 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('images/logo.png'),
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('images/logo.png'),
+                  ),
                 ),
               ),
               SizedBox(
@@ -48,7 +50,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   //Do something with the user input.
                   email = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
               ),
               SizedBox(
                 height: 8.0,
@@ -60,7 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   //Do something with the user input.
                   password = value;
                 },
-                decoration: kTextFieldDecoration.copyWith(hintText: 'Enter your password'),
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your password'),
               ),
               SizedBox(
                 height: 24.0,
@@ -74,7 +78,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   });
 
                   try {
-                    final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
 
                     if (user != null) {
                       Navigator.pushNamed(context, ChatScreen.id);
